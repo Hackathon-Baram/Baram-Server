@@ -26,7 +26,7 @@ public class PostEntity {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     @JsonBackReference
     private List<LikeEntity> likeEntities = new ArrayList<>();
 

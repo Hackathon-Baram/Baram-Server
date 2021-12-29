@@ -12,8 +12,6 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<PostEntity, Long> {
 
-    @EntityGraph(attributePaths = "likes")
-    @Query("select likes from PostEntity likes")
     List<PostEntity> findAll(Sort sort);
 
     PostEntity findByIdx(Long idx);
