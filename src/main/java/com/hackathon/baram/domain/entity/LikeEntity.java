@@ -1,6 +1,6 @@
 package com.hackathon.baram.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -24,7 +24,7 @@ public class LikeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    @JsonManagedReference
+    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PostEntity post;
 
