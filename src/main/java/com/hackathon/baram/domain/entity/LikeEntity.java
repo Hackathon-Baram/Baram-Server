@@ -1,6 +1,7 @@
 package com.hackathon.baram.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -28,6 +29,7 @@ public class LikeEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PostEntity post;
 
+    @Builder
     public LikeEntity(String author, PostEntity postEntity) {
         this.author = author;
         this.post = postEntity;
