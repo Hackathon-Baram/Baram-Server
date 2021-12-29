@@ -3,16 +3,14 @@ package com.hackathon.baram.domain.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "post")
+@Table(name = "likes")
 @Getter
-@Setter
 @NoArgsConstructor
 public class LikeEntity {
 
@@ -21,17 +19,17 @@ public class LikeEntity {
     @Column(name = "idx", unique = true, nullable = false)
     private Long idx;
 
-    @Column(name = "uuid", nullable = false)
-    private String uuid;
+    @Column(name = "author", nullable = false)
+    private String author;
 
     @ManyToOne
     @JoinColumn
     @JsonManagedReference
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private PostEntity postEntity;
+    private PostEntity post;
 
-    public LikeEntity(String uuid, PostEntity postEntity) {
-        this.uuid = uuid;
-        this.postEntity = postEntity;
+    public LikeEntity(String author, PostEntity postEntity) {
+        this.author = author;
+        this.post = postEntity;
     }
 }
