@@ -20,9 +20,6 @@ public class PostEntity {
     @Column(name = "idx", unique = true, nullable = false)
     private Long idx;
 
-    @Column(name = "title", nullable = false)
-    private String title;
-
     @Column(name = "content", nullable = false)
     private String content;
 
@@ -31,7 +28,6 @@ public class PostEntity {
     private List<LikeEntity> likeEntities = new ArrayList<>();
 
     public PostEntity(PostDto postDto) {
-        this.title = postDto.getTitle();
         this.content = postDto.getContent();
     }
 }

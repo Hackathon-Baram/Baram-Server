@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/post")
@@ -30,5 +31,12 @@ public class PostController {
         List<PostEntity> list = postService.getPosts();
 
         return new ResponseData<>(HttpStatus.OK, "성공", list);
+    }
+
+    @GetMapping(value = "/uuid")
+    public ResponseData<String> uuid() {
+        String uuid = UUID.randomUUID().toString();
+
+        return new ResponseData<>(HttpStatus.OK, "성공", uuid);
     }
 }
