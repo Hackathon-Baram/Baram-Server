@@ -21,7 +21,7 @@ public class PostEntity {
     @Column(name = "idx", unique = true, nullable = false)
     private Long idx;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "content", columnDefinition = "LONGTEXT", nullable = false)
     private String content;
 
     @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
@@ -29,7 +29,7 @@ public class PostEntity {
     private List<LikeEntity> likeEntities = new ArrayList<>();
 
     @Builder
-    public PostEntity(PostDto postDto) {
-        this.content = postDto.getContent();
+    public PostEntity(String content) {
+        this.content = content;
     }
 }

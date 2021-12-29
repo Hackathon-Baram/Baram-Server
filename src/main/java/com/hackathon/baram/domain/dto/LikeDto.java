@@ -1,5 +1,7 @@
 package com.hackathon.baram.domain.dto;
 
+import com.hackathon.baram.domain.entity.LikeEntity;
+import com.hackathon.baram.domain.entity.PostEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,4 +19,11 @@ public class LikeDto {
 
     @NotBlank(message = "idx는 필수 입력값입니다")
     private Long idx;
+
+    public LikeEntity toEntity(PostEntity postEntity) {
+        return  LikeEntity.builder()
+                .author(author)
+                .postEntity(postEntity)
+                .build();
+    }
 }
