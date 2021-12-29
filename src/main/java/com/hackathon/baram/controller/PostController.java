@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +22,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping(value = "")
-    public Response create(@RequestBody PostDto postDto) {
+    public Response create(@Valid @RequestBody PostDto postDto) {
         postService.createPost(postDto);
 
         return new Response(HttpStatus.OK, "성공");

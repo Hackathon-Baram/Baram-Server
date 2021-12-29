@@ -1,9 +1,15 @@
 package com.hackathon.baram.domain.dto;
 
-import lombok.Data;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class LikeDto {
+
     private String author;
     private Long idx;
 }
