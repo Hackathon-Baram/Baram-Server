@@ -5,14 +5,12 @@ import com.hackathon.baram.domain.response.Response;
 import com.hackathon.baram.service.like.LikeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/like")
 @RequiredArgsConstructor
+@CrossOrigin(value = "*")
 public class LikeController {
 
     private final LikeService likeService;
