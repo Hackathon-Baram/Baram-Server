@@ -22,7 +22,7 @@ public class LikeEntity {
     @Column(name = "author", nullable = false)
     private String author;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     @JsonManagedReference
     @OnDelete(action = OnDeleteAction.CASCADE)
