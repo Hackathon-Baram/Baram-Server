@@ -9,5 +9,7 @@ public interface PostService {
 
     void createPost(PostDto postDto);
 
+    PostEntity findPostByIdx(Long idx);
+
     List<PostEntity> getPosts();
 }

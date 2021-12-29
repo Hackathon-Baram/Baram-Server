@@ -4,7 +4,9 @@ import com.hackathon.baram.domain.dto.PostDto;
 import com.hackathon.baram.domain.entity.PostEntity;
 import com.hackathon.baram.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,6 +21,12 @@ public class PostServiceImpl implements PostService {
     @Transactional
     public void createPost(PostDto postDto) {
         postRepository.save(postDto.toEntity());
+    }
+
+    @Override
+    public PostEntity findPostByIdx(Long idx) {
+        return postRepository.findByIdx(idx)
+                .orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "존재하지 않는 게시물"));
     }
 
     @Override
