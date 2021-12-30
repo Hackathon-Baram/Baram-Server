@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/like")
 @RequiredArgsConstructor
@@ -16,7 +18,7 @@ public class LikeController {
     private final LikeService likeService;
 
     @PostMapping("")
-    public Response add(@RequestBody LikeDto likeDto) {
+    public Response add(@Valid @RequestBody LikeDto likeDto) {
         likeService.addLike(likeDto);
 
         return new Response(HttpStatus.OK, "성공");

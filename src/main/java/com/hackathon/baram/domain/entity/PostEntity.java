@@ -2,6 +2,7 @@ package com.hackathon.baram.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackathon.baram.domain.dto.PostDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,14 +21,15 @@ public class PostEntity {
     @Column(name = "idx", unique = true, nullable = false)
     private Long idx;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "content", columnDefinition = "LONGTEXT", nullable = false)
     private String content;
 
     @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<LikeEntity> likeEntities = new ArrayList<>();
 
-    public PostEntity(PostDto postDto) {
-        this.content = postDto.getContent();
+    @Builder
+    public PostEntity(String content) {
+        this.content = content;
     }
 }
